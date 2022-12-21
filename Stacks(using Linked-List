@@ -1,0 +1,92 @@
+#include<stdio.h>
+#include<stdlib.h>
+ struct node        //making use of the defined
+ {
+    int val;
+    struct node *next;
+    
+
+ };
+ struct node* head=NULL;        //initializing head as null
+
+
+ void push()            //function push 
+ {
+    int x;
+    struct node *ptr=(struct node*)malloc(sizeof(struct node));     //memory allocated
+    if(ptr==NULL)
+    {
+        printf("Not able to push the element");
+        exit(1);
+    }
+    
+        printf("Enter the value");
+        scanf("%d",&x);
+        
+            ptr->val=x;
+            ptr->next=head;
+            head=ptr;
+        
+        printf("Item pushed");
+    
+ }
+ void pop()     //function pop 
+ {
+    int item;
+    struct node *ptr;
+    if(head==NULL)
+    {
+        printf("Underflow");
+    }
+    else 
+    {
+        item=head->val;
+        ptr=head;
+        head=head->next;
+        free(ptr);
+        printf("Item popped %d\n",item);
+    }
+ }
+
+ void display()     //displaying the elements of the stack
+ {
+    int i;
+    struct node *ptr;
+    ptr=head;
+    if(ptr==NULL)
+    {
+            printf("Satck ids empty");
+    }
+    else{
+        printf("printing stack::\n");
+        while(ptr!=NULL)
+        {
+            printf("%d\t",ptr->val);
+            printf("\n");
+            ptr=ptr->next;
+        }
+    }
+ }
+ int main()   
+{
+    int ch;
+    while(1)
+    {
+    printf("\n1.push,\n2.pop,\n3.display,\n4.exit::");
+    scanf("%d",&ch);
+    switch(ch)
+    {
+        case 1: push();
+                  break;
+        case 2: pop();
+                  break;
+        case 3: display();
+                  break;
+        case 4: exit(0);
+                  break;
+        default: printf("INVALID\n");
+            break;
+       
+    }
+}
+}
