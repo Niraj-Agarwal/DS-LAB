@@ -1,0 +1,26 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+void tower(int,char,char,char); //function prototype
+
+int main()
+{
+int num;
+printf("Enter the number of disk::");
+scanf("%d",&num);
+printf(" the sequence\n");
+tower(num,'A','C','B'); //calling of function
+return 0;
+}
+
+void tower(int num,char from,char to,char aux) //function defination
+{
+if(num==1)
+{
+printf("move disk 1 from %c to %c",from,to);
+return ;
+}
+tower(num-1,from,aux,to);	//recursive call
+printf("\n move disk %d from %c to %c\n",num,from,to);
+tower(num-1,aux,to,from);	//recursive call
+}
